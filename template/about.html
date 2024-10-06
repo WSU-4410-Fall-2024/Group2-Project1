@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        h1 {
+            color: #ff6347;
+            font-weight: bold;
+            font-size: 2.5rem; 
+            margin-bottom: 20px;
+            letter-spacing: 1.3px;
+            transition: transform 0.3s ease;
+        }
+        p {
+            color: #555;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            text-align: justify;
+        }
+        .about-section {
+            margin-bottom: 35px;
+            transition: transform 0.3s ease;
+        }
+        .about-section:hover {
+            transform: scale(1.03);
+        }
+        .terms-btn {
+            padding: 10px 30px;
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .terms-btn:hover {
+            background-color: #e84142;
+            transform: translateY(-4px);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            margin-top: 60px;
+            font-size: 15px;
+        }
+
+        /* Collapsible section */
+        .collapsible {
+            background-color: #ff7f50;
+            color: white;
+            cursor: pointer;
+            padding: 14px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            text-align: left;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+        .collapsible:hover {
+            background-color: #ff6347;
+        }
+        .collapsible:after {
+            content: '\002B'; /* Plus symbol */
+            float: right;
+            font-weight: bold;
+        }
+        .collapsible.active:after {
+            content: "\2212"; /* Minus symbol */
+        }
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: white;
+            margin-top: 10px;
+            border: 1px solid #ff7f50;
+            border-radius: 5px;
+        }
+        .content p {
+            margin: 15px 0;
+            color: #333;
+            font-size: 1.2rem; /* Consistent paragraph size */
+            text-align: justify;
+        }
+    </style>
+</head>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>About Us</h1>
+    <div class="about-section">
+        <p>At EventWizard, we are passionate about bringing your event visions to life. Our platform simplifies planning, letting you create unforgettable experiences effortlessly. Whether it’s guest list management, invitations, or tracking RSVPs, we've got you covered from start to finish.</p>
+    </div>
+    <div class="about-section">
+        <p>We believe in blending innovation and simplicity, so you can focus on what truly matters—enjoying the event. From weddings to corporate functions, we ensure every detail is taken care of, making your event stress-free and memorable.</p>
+    </div>
+
+    <!-- Collapsible section for Terms and Conditions -->
+    <button class="collapsible">Terms and Conditions</button>
+    <div class="content">
+        <p>
+            By using EventWizard, you agree to the following terms and conditions. All bookings are subject to availability and confirmation by our team.
+            EventWizard is not responsible for any unforeseen circumstances that may affect the success of the event, but we will strive to accommodate and assist in the best possible way. 
+            Payments must be made according to the agreed schedule, and cancellation policies will apply. Please ensure all guest information provided is accurate to avoid any last-minute issues.
+        </p>
+        <p>
+            We reserve the right to update these terms as needed, and continued use of our services implies acceptance of any modifications. For more detailed policies, contact our support team.
+        </p>
+    </div>
+</div>
+
+<footer>
+    &copy; 2024 EventWizard. Crafted with ❤️ for unforgettable events.
+</footer>
+
+<!-- Script for Collapsible Section -->
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    for (var i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+{% endblock %}
